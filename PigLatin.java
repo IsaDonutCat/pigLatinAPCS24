@@ -23,24 +23,25 @@ public class PigLatin
                 System.out.println("space found");
                 word = phrase.substring(start, i); //since substring does not include end character, space is not included
                 chara = phrase.substring(start, start + 1);
+                
+            
+                if (chara.equalsIgnoreCase("a") || chara.equalsIgnoreCase("e") || chara.equalsIgnoreCase("i") || chara.equalsIgnoreCase("o")|| chara.equalsIgnoreCase("u"))
+                {
+                    System.out.println("vowel found");
+                    phrase = phrase.substring(0, i) + "way" + phrase.substring(i, len + 3);
+                    len = phrase.lengt();
+                    start = i + 1 + 3; //updates the next starting position fo word
+                }
+        
+                {
+                    System.out.println("no vowel found");
+                }
+            
             }
             else
             {
                 System.out.println("no space found");
             }
-        
-            if (chara.equalsIgnoreCase("a") || chara.equalsIgnoreCase("e") || chara.equalsIgnoreCase("i") || chara.equalsIgnoreCase("o")|| chara.equalsIgnoreCase("u"))
-            {
-                System.out.println("vowel found");
-                phrase = phrase.substring(0, i) + "way" + phrase.substring(i, len + 3);
-                len = phrase.length(); //updates phrase length
-            }
-            else
-            {
-                System.out.println("no vowel found");
-            }
-            start = i + 1; //updates the next starting position fo word
-
             System.out.println("for loop running " + i);
         }
 

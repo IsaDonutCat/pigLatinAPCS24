@@ -9,7 +9,7 @@ public class PigLatin
         System.out.print("Original:");
         String phrase = input.nextLine();
 
-        int len = phrase.Length();
+        int len = phrase.length();
         int start = 0;
         String chara;
         int cycle; // intended to cycle through consonants until it reaches a value;
@@ -26,12 +26,14 @@ public class PigLatin
                 }
                 else
                 {   
-                    cycle = start + 1;
+                    cycle = start + 1; // starts on the 2nd letter of a word
                     while (!(chara == "a" || chara == "e" || chara == "i" || chara == "o" || chara == "u"))
                     {
-                        chara = phrase.substring(cycle, cycle + 1);
+                        chara = phrase.substring(cycle, cycle + 1); 
                         cycle += 1;
                     }
+
+                    phrase = phrase.substring(0 , start) + phrase.substring(cycle - 1, cycle) + phrase.substring(start, cycle - 1) + "ay" + phrase.substring(i, len);
                 }
                 start = i + 1;
             }

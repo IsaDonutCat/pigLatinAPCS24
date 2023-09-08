@@ -27,12 +27,12 @@ public class PigLatin
             
                 if (chara.equalsIgnoreCase("a") || chara.equalsIgnoreCase("e") || chara.equalsIgnoreCase("i") || chara.equalsIgnoreCase("o")|| chara.equalsIgnoreCase("u"))
                 {
-                    System.out.println("vowel found");
-                    phrase = phrase.substring(0, i) + "way" + phrase.substring(i, len + 3);
-                    len = phrase.lengt();
+                    System.out.println("vowel found " + chara);
+                    phrase = phrase + "way";
+                    len = phrase.length();
                     start = i + 1 + 3; //updates the next starting position fo word
                 }
-        
+                else
                 {
                     System.out.println("no vowel found");
                 }

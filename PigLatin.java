@@ -26,7 +26,6 @@ public class PigLatin
                     len = origin.length(); //modifies len so it remembers to cycle through the rest of the word
                     i += 3; //modifies i so it doesn't check a word that has already been pig-latined
                     start = i + 1; //sets the start to the next word, assuming here is only one space between words;
-                    
                     if (i > len)
                     {
                         break;
@@ -45,7 +44,6 @@ public class PigLatin
                     len = origin.length();
                     i += 2;
                     start = i + 1;
-
                     if (i > len)
                     {
                         break;
@@ -56,16 +54,7 @@ public class PigLatin
             {
                 if (phrase[start] == 'a' || phrase[start] == 'e' || phrase[start] == 'i' || phrase[start] == 'o' || phrase[start] == 'u') //vowel at the start of the word
                 {
-                    origin = origin.substring(0, i) + "way" + origin.substring(i, len);
-                    phrase = origin.toCharArray(); //updates both char array and origin
-                    len = origin.length(); //modifies len so it remembers to cycle through the rest of the word
-                    i += 3; //modifies i so it doesn't check a word that has already been pig-latined
-                    start = i + 1; //sets the start to the next word, assuming here is only one space between words;
-
-                    if (i > len)
-                    {
-                        break;
-                    }
+                    origin = origin.substring(0, len) + "way"; //phrase doesn't need to be redelcared since this is the end
                 }
                 else
                 {
@@ -75,16 +64,7 @@ public class PigLatin
                         difference += 1;
                     } //quits loop when phrase[difference] is a vowel
 
-                    origin = origin.substring(0, start) + origin.substring(difference, i) + origin.substring(start, difference) + "ay" + origin.substring(i, len);
-                    phrase = origin.toCharArray();
-                    len = origin.length();
-                    i += 2;
-                    start = i + 1;
-
-                    if (i > len)
-                    {
-                        break;
-                    }
+                    origin = origin.substring(0, len) + "ay";
                 }
             }
         }

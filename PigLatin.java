@@ -54,7 +54,7 @@ public class PigLatin
             {
                 if (phrase[start] == 'a' || phrase[start] == 'e' || phrase[start] == 'i' || phrase[start] == 'o' || phrase[start] == 'u') //vowel at the start of the word
                 {
-                    origin = origin.substring(0, len) + "way"; //phrase doesn't need to be redelcared since this is the end
+                    origin = origin + "way"; //phrase doesn't need to be redelcared since this is the end
                 }
                 else
                 {
@@ -64,7 +64,7 @@ public class PigLatin
                         difference += 1;
                     } //quits loop when phrase[difference] is a vowel
 
-                    origin = origin.substring(0, len) + "ay";
+                    origin = origin.substring(0, start) + origin.substring(difference, i)  + "ay" + origin.substring(start, difference);
                 }
             }
         }

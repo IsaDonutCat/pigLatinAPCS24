@@ -8,10 +8,11 @@ public class PigLatin
         Scanner input = new Scanner(System.in);
 
         System.out.print("Original:");
-        String phrase = input.nextLine();
+        String origin = input.nextLine();
+        char[] phrase = origin.toCharArray();
         String word; // single word to pig latin-ate
         int start = 0; //the start of the word
-        int len = phrase.length();
+        int len = origin.length();
         int difference; 
         for (int i = 0; i < len; i++)
         {
@@ -20,8 +21,9 @@ public class PigLatin
             {
                 if (phrase[start] == 'a' || phrase[start] == 'e' || phrase[start] == 'i' || phrase[start] == 'o' || phrase[start] == 'u') //vowel at the start of the word
                 {
-                    phrase = phrase.substring(0, i) + "way" + phrase.substring(i, len);
-                    len += 3; //modifies len so it remembers to cycle through the rest of the word
+                    origin = origin.substring(0, i) + "way" + origin.substring(i, len);
+                    phrase = origin.toCharArray(); //updates both char array and origin
+                    len = origin.length(); //modifies len so it remembers to cycle through the rest of the word
                     i += 3; //modifies i so it doesn't check a word that has already been pig-latined
                     start = i + 1; //sets the start to the next word, assuming here is only one space between words;
                 }
@@ -33,8 +35,9 @@ public class PigLatin
                         difference += 1;
                     } //quits loop when phrase[difference] is a vowel
 
-                    phrase = phrase.substring(0, start) + phrase.substring(difference, i) + phrase.substring(start, difference) + "ay" + phrase.substring(i, len);
-                    len += 2;
+                    origin = origin.substring(0, start) + origin.substring(difference, i) + origin.substring(start, difference) + "ay" + origin.substring(i, len);
+                    phrase = origin.toCharArray();
+                    len = origin.length();
                     i += 2;
                     start = i + 1;
                 }

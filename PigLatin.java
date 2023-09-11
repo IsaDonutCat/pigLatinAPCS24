@@ -26,6 +26,11 @@ public class PigLatin
                     len = origin.length(); //modifies len so it remembers to cycle through the rest of the word
                     i += 3; //modifies i so it doesn't check a word that has already been pig-latined
                     start = i + 1; //sets the start to the next word, assuming here is only one space between words;
+                    
+                    if (i > len)
+                    {
+                        break;
+                    }
                 }
                 else
                 {
@@ -40,6 +45,11 @@ public class PigLatin
                     len = origin.length();
                     i += 2;
                     start = i + 1;
+
+                    if (i > len)
+                    {
+                        break;
+                    }
                 }
             }
             else if (i == (len - 1))
@@ -51,6 +61,11 @@ public class PigLatin
                     len = origin.length(); //modifies len so it remembers to cycle through the rest of the word
                     i += 3; //modifies i so it doesn't check a word that has already been pig-latined
                     start = i + 1; //sets the start to the next word, assuming here is only one space between words;
+
+                    if (i > len)
+                    {
+                        break;
+                    }
                 }
                 else
                 {
@@ -65,6 +80,11 @@ public class PigLatin
                     len = origin.length();
                     i += 2;
                     start = i + 1;
+
+                    if (i > len)
+                    {
+                        break;
+                    }
                 }
             }
         }

@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.Character;
 
 public class PigLatin
 {
@@ -8,43 +9,33 @@ public class PigLatin
 
         System.out.print("Original:");
         String phrase = input.nextLine();
-        String word;
-        String chara; // for testing if the beginning of a word is the vowel
+        String word; // single word to pig latin-ate
+        int start = 0; //the start of the word
         int len = phrase.length();
-        int start = 0; // initializes it so that start is the beginning of the string
-        
-        for (int i = 0; i < len; i++)
-        {   
-            chara = phrase.substring(i, i + 1);
-            System.out.println(chara);
 
-            if (chara.equalsIgnoreCase(" ")) //finds end of a word
+        for (int i = 0; i < len; i++)
+        {
+
+            if (phrase[i] == ' ') //space detected. the previous set of characters will be a word
             {
-                System.out.println("space found");
-                word = phrase.substring(start, i); //since substring does not include end character, space is not included
-                chara = phrase.substring(start, start + 1);
-                
-            
-                if (chara.equalsIgnoreCase("a") || chara.equalsIgnoreCase("e") || chara.equalsIgnoreCase("i") || chara.equalsIgnoreCase("o")|| chara.equalsIgnoreCase("u"))
+                if (phrase[start] == 'a' || phrase[start] == 'e' || phrase[start] == 'i' || phrase[start] == 'o' || phrase[start] == 'u') //vowel at the start of the word
                 {
-                    System.out.println("vowel found " + chara);
-                    phrase = phrase + "way";
-                    len = phrase.length();
-                    start = i + 1 + 3; //updates the next starting position fo word
+                    phrase = phrase.substring(start, i) + "way" + phrase.substring(i, len);
+                    len += 3; //modifies len so it remembers to cycle through the rest of the word
+                    i += 3; //modifies i so it doesn't check a word that has already been pig-latined
+                    start = i + 1; //sets the start to the next word, assuming here is only one space between words;
                 }
                 else
                 {
-                    System.out.println("no vowel found");
+                    while (phrase[start] != 'a' || phrase[start] != 'e' || phrase[start] != 'i' || phrase[start] != 'o' || phrase[start] != 'u')
+                    {
+                        
+                    }
                 }
-            
             }
-            else
-            {
-                System.out.println("no space found");
-            }
-            System.out.println("for loop running " + i);
         }
 
         System.out.println(phrase);
+        input.close();
     }
 }

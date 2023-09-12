@@ -11,6 +11,7 @@ public class PigLatin
         System.out.print("Original:");
 
         String origin = input.nextLine(); //gets input
+        char[] phrase = origin.toCharArray();
         ArrayList<String> wordsList = new ArrayList<String>(); //intializes an arraylist,which is a like a dynamic memory from c
         int len = origin.length(); //gets len to run through and find spaces
         
@@ -54,7 +55,7 @@ public class PigLatin
             word = wordsList.get(i).toCharArray();
             if (word[0] == 'a' || word[0] == 'e' || word[0] == 'i' || word[0] == 'o' || word[0] == 'u')
             {
-                wordsList.set(i, word + "way");
+                wordsList.set(i, wordsList.get(i) + "way");
             }
         }
         

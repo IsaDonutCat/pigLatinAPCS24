@@ -32,7 +32,7 @@ public class PigLatin
                     wordsList.add(origin.substring(previouSpace + 1, i));
                     previouSpace = i;
                 }
-            }   
+            }  
 
             if (i == len - 1)
             {

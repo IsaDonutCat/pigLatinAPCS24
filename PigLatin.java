@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.lang.Character;
 import java.util.ArrayList;
 
 public class PigLatin
@@ -38,7 +37,14 @@ public class PigLatin
             if (i == len - 1)
             {
                 //System.out.println("last end reached fo string");
-                wordsList.add(origin.substring(previouSpace + 1, len));
+                if (spaceCount == 0)
+                {
+                    wordsList.add(origin.substring(previouSpace, len));
+                }
+                else
+                {
+                    wordsList.add(origin.substring(previouSpace + 1, len));
+                }
             }
         } //creates an array of words to pig latinate
 
@@ -51,34 +57,42 @@ public class PigLatin
         char[] word;
         String syllable;
         int scroll = 0;
+        String vowelStart;
+        String wordListed;
+        int wordLen;
 
         for (int i = 0; i < wordCt; i ++)
         {
             scroll = 0;
             word = wordsList.get(i).toCharArray();
-
-            if (word[0] == 'a' || word[0] == 'e' || word[0] == 'i' || word[0] == 'o' || word[0] == 'u')
+            wordListed = wordsList.get(i);
+            wordLen = wordListed.length();
+            
+            if (Character.toLowerCase(word[0]) == 'a' || Character.toLowerCase(word[0]) == 'e' || 
+            Character.toLowerCase(word[0]) == 'i' || Character.toLowerCase(word[0]) == 'o' || Character.toLowerCase(word[0]) == 'u')
             {
-                wordsList.set(i, wordsList.get(i) + "way");
+                wordsList.set(i, wordListed + "way");
             }
             else
             {
-                if (scroll != wordCt - 1)
+                while (Character.toLowerCase(word[scroll]) != 'a' && Character.toLowerCase(word[scroll]) != 'e' && 
+                Character.toLowerCase(word[scroll]) != 'i' && Character.toLowerCase(word[scroll]) != 'o' && Character.toLowerCase(word[scroll]) != 'u')
                 {
-                    while (word[scroll] != 'a' || word[scroll] != 'e' || word[scroll] != 'i' || word[scroll] != 'o' || word[scroll] != 'u')
+                    scroll += 1;
+
+                    if (scroll == wordLen - 1)
                     {
-                        scroll += 1;
-                        if (scroll == wordCt - 1)
-                        {
-                            break;
-                        }
+                        scroll = 1;
+                        break;
                     }
-                }
 
-                syllable = wordsList.get(i).substring(0, scroll);
-                System.out.println(syllable);
+                } //scroll will end up the vowel chara index
 
-                wordsList.set(i, wordsList.get(i).substring(scroll, wordsList.get(i).length()) + syllable + "ay");
+                syllable = wordListed.substring(0, scroll);
+                //System.out.println(syllable + scroll);
+                vowelStart = wordListed.substring(scroll, wordListed.length());
+                //System.out.println(vowelStart);
+                wordsList.set(i, vowelStart + syllable + "ay");
             }
         }
         

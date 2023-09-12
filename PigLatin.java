@@ -54,22 +54,31 @@ public class PigLatin
 
         for (int i = 0; i < wordCt; i ++)
         {
+            scroll = 0;
             word = wordsList.get(i).toCharArray();
+
             if (word[0] == 'a' || word[0] == 'e' || word[0] == 'i' || word[0] == 'o' || word[0] == 'u')
             {
                 wordsList.set(i, wordsList.get(i) + "way");
             }
             else
             {
-                scroll = 1;
-                while (word[scroll] != 'a' || word[scroll] != 'e' || word[scroll] != 'i' || word[scroll] != 'o' || word[scroll] != 'u')
+                if (scroll != wordCt - 1)
                 {
-                    scroll += 1;
+                    while (word[scroll] != 'a' || word[scroll] != 'e' || word[scroll] != 'i' || word[scroll] != 'o' || word[scroll] != 'u')
+                    {
+                        scroll += 1;
+                        if (scroll == wordCt - 1)
+                        {
+                            break;
+                        }
+                    }
                 }
 
                 syllable = wordsList.get(i).substring(0, scroll);
+                System.out.println(syllable);
 
-                wordsList.set(i, wordsList.get(i).substring(scroll) + syllable + "ay");
+                wordsList.set(i, wordsList.get(i).substring(scroll, wordsList.get(i).length()) + syllable + "ay");
             }
         }
         
